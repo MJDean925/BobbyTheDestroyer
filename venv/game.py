@@ -1,7 +1,8 @@
 import pygame
 from GameLoop import GameLoop
 from Level import Level
-
+from Player import Player
+import os
 from pygame.sprite import Group
 
 
@@ -11,16 +12,18 @@ class Game:
     def __init__(self):
         pygame.init()
         pygame.mixer.init()
-        self.screen = pygame.display.set_mode((280, 360))
+        self.screen = pygame.display.set_mode((896, 896))
         self.screen_rect = self.screen.get_rect()
         self.font = pygame.font.Font(None, 50)
         self.font2 = pygame.font.Font(None, 25)
         self.won = False
         self.lost = False
-        pygame.display.set_caption("Pacman Portal")
+        pygame.display.set_caption("AI game")
         self.clock = pygame.time.Clock()
-        self.level = Level(self.screen, 'levelfile1.txt')
-        self.player = Player(self.screen, 25, 13, self.level)
+        THIS_FOLDER = os.path.dirname(os.path.abspath(__file__))
+        my_file = os.path.join(THIS_FOLDER, 'maze.txt')
+        self.level = Level(self.screen, my_file)
+        self.player = Player(self.screen, 1, 1, self.level)
         self.game_active =True
 
     def update_screen(self):

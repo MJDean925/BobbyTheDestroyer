@@ -4,7 +4,7 @@ from pygame.sprite import Group
 
 
 class Level:
-    WALL_SIZE = 10
+    WALL_SIZE = 64
 
     def __init__(self, screen, levelfile):
         self.screen = screen
@@ -13,33 +13,34 @@ class Level:
         with open(self.filename, 'r') as f:
             self.rows = f.read().splitlines()
 
-        self.lblocks = []
-        self.rblocks = []
-        self.tblocks = []
+        self.ablocks = []
         self.bblocks = []
+        self.cblocks = []
+        self.dblocks = []
+        self.eblocks = []
+        self.fblocks = []
         self.gblocks = []
+        self.hblocks = []
+        self.iblocks = []
+        self.jblocks = []
+        self.kblocks = []
+        self.lblocks = []
         self.mblocks = []
-        self.nblocks = []
-        self.oblocks = []
-        self.yblocks = []
-        self.zblocks = []
-        self.wblocks = []
-        self.xblocks = []
         sz = Level.WALL_SIZE
-        self.lblock = PhotoRect(screen, "left_blocks", sz, sz)
-        self.rblock = PhotoRect(screen, "right_blocks", sz, sz)
-        self.tblock = PhotoRect(screen, "top_blocks", sz, sz)
-        self.bblock = PhotoRect(screen, "bottom_blocks", sz, sz)
-        self.gblock = PhotoRect(screen, "top_right_block", sz, sz)
-        self.mblock = PhotoRect(screen, "top_left_block", sz, sz)
-        self.nblock = PhotoRect(screen, "bottom_right_block", sz, sz)
-        self.oblock = PhotoRect(screen, "bottom_left_block", sz, sz)
-        self.yblock = PhotoRect(screen, "top_left_corner_blocks", sz, sz)
-        self.zblock = PhotoRect(screen, "top_right_corner_blocks", sz, sz)
-        self.wblock = PhotoRect(screen, "bottom_left_corner_blocks", sz, sz)
-        self.xblock = PhotoRect(screen, "bottom_right_corner_blocks", sz, sz)
-
-        self.deltax = self.deltay = Level.BRICK_SIZE
+        self.ablock = PhotoRect(screen, "blocks\\A", sz, sz)
+        self.bblock = PhotoRect(screen, "blocks\\B", sz, sz)
+        self.cblock = PhotoRect(screen, "blocks\\C", sz, sz)
+        self.dblock = PhotoRect(screen, "blocks\\D", sz, sz)
+        self.eblock = PhotoRect(screen, "blocks\\E", sz, sz)
+        self.fblock = PhotoRect(screen, "blocks\\F", sz, sz)
+        self.gblock = PhotoRect(screen, "blocks\\G", sz, sz)
+        self.hblock = PhotoRect(screen, "blocks\\H", sz, sz)
+        self.iblock = PhotoRect(screen, "blocks\\I", sz, sz)
+        self.jblock = PhotoRect(screen, "blocks\\J", sz, sz)
+        self.kblock = PhotoRect(screen, "blocks\\K", sz, sz)
+        self.lblock = PhotoRect(screen, "blocks\\L", sz, sz)
+        self.mblock = PhotoRect(screen, "blocks\\M", sz, sz)
+        self.deltax = self.deltay = sz
 
         self.build()
 
@@ -52,53 +53,58 @@ class Level:
             row = self.rows[nrow]
             for ncol in range(len(row)):
                 col = row[ncol]
-                if col == 'L':
-                    self.lblocks.append(pygame.Rect(ncol * dx, nrow * dy, w, h))
-                elif col == 'R':
-                    self.rblocks.append(pygame.Rect(ncol * dx, nrow * dy, w, h))
-                elif col == 'T':
-                    self.tblocks.append(pygame.Rect(ncol * dx, nrow * dy, w, h))
+                if col == 'A':
+                    self.ablocks.append(pygame.Rect(ncol * dx, nrow * dy, w, h))
                 elif col == 'B':
                     self.bblocks.append(pygame.Rect(ncol * dx, nrow * dy, w, h))
+                elif col == 'C':
+                    self.cblocks.append(pygame.Rect(ncol * dx, nrow * dy, w, h))
+                elif col == 'D':
+                    self.dblocks.append(pygame.Rect(ncol * dx, nrow * dy, w, h))
+                elif col == 'E':
+                    self.eblocks.append(pygame.Rect(ncol * dx, nrow * dy, w, h))
+                elif col == 'F':
+                    self.fblocks.append(pygame.Rect(ncol * dx, nrow * dy, w, h))
                 elif col == 'G':
                     self.gblocks.append(pygame.Rect(ncol * dx, nrow * dy, w, h))
+                elif col == 'H':
+                    self.hblocks.append(pygame.Rect(ncol * dx, nrow * dy, w, h))
+                elif col == 'I':
+                    self.iblocks.append(pygame.Rect(ncol * dx, nrow * dy, w, h))
+                elif col == 'J':
+                    self.jblocks.append(pygame.Rect(ncol * dx, nrow * dy, w, h))
+                elif col == 'K':
+                    self.kblocks.append(pygame.Rect(ncol * dx, nrow * dy, w, h))
+                elif col == 'L':
+                    self.lblocks.append(pygame.Rect(ncol * dx, nrow * dy, w, h))
                 elif col == 'M':
                     self.mblocks.append(pygame.Rect(ncol * dx, nrow * dy, w, h))
-                elif col == 'N':
-                    self.nblocks.append(pygame.Rect(ncol * dx, nrow * dy, w, h))
-                elif col == 'O':
-                    self.oblocks.append(pygame.Rect(ncol * dx, nrow * dy, w, h))
-                elif col == 'Y':
-                    self.yblocks.append(pygame.Rect(ncol * dx, nrow * dy, w, h))
-                elif col == 'Z':
-                    self.zblocks.append(pygame.Rect(ncol * dx, nrow * dy, w, h))
-                elif col == 'W':
-                    self.wblocks.append(pygame.Rect(ncol * dx, nrow * dy, w, h))
-                elif col == 'X':
-                    self.xblocks.append(pygame.Rect(ncol * dx, nrow * dy, w, h))
+
 
     def blitme(self):
-        for rect in self.tblocks:
-            self.screen.blit(self.tblock.image, rect)
+        for rect in self.ablocks:
+            self.screen.blit(self.bblock.image, rect)
         for rect in self.bblocks:
             self.screen.blit(self.bblock.image, rect)
-        for rect in self.rblocks:
-            self.screen.blit(self.rblock.image, rect)
-        for rect in self.lblocks:
-            self.screen.blit(self.lblock.image, rect)
+        for rect in self.cblocks:
+            self.screen.blit(self.cblock.image, rect)
+        for rect in self.dblocks:
+            self.screen.blit(self.dblock.image, rect)
+        for rect in self.eblocks:
+            self.screen.blit(self.mblock.image, rect)
+        for rect in self.fblocks:
+            self.screen.blit(self.fblock.image, rect)
         for rect in self.gblocks:
             self.screen.blit(self.gblock.image, rect)
+        for rect in self.hblocks:
+            self.screen.blit(self.hblock.image, rect)
+        for rect in self.iblocks:
+            self.screen.blit(self.iblock.image, rect)
+        for rect in self.jblocks:
+            self.screen.blit(self.jblock.image, rect)
+        for rect in self.kblocks:
+            self.screen.blit(self.kblock.image, rect)
+        for rect in self.lblocks:
+            self.screen.blit(self.lblock.image, rect)
         for rect in self.mblocks:
             self.screen.blit(self.mblock.image, rect)
-        for rect in self.nblocks:
-            self.screen.blit(self.nblock.image, rect)
-        for rect in self.oblocks:
-            self.screen.blit(self.oblock.image, rect)
-        for rect in self.yblocks:
-            self.screen.blit(self.yblock.image, rect)
-        for rect in self.zblocks:
-            self.screen.blit(self.zblock.image, rect)
-        for rect in self.wblocks:
-            self.screen.blit(self.wblock.image, rect)
-        for rect in self.xblocks:
-            self.screen.blit(self.xblock.image, rect)

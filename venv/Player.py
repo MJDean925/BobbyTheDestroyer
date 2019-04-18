@@ -9,16 +9,16 @@ class Player(Sprite):
         super(Player, self).__init__()
         self.screen = screen
         self.s_rect = screen.get_rect()
-        self.im = PhotoRect(screen, "Player_1", 18, 18)
-        self.im.rect.centerx = col*10+5
-        self.im.rect.centery = row*10+5
+        self.im = PhotoRect(screen, "character\\character_still", 64, 64)
+        self.im.rect.centerx = col*64 +32
+        self.im.rect.centery = row*64 +32
         self.maze = maze
         self.rect = self.im.rect
         self.moving_up = False
         self.moving_down = False
         self.moving_right = False
         self.moving_left = False
-        self.speed = 10
+        self.speed = 64
         self.state = 1
         self.death_state = 1
         self.dir = ""
@@ -43,8 +43,8 @@ class Player(Sprite):
                 self.im.blitme()
                 self.speed_timer = pygame.time.get_ticks()
                 self.dir = 'up'
-                temp = "Player_up_" + str(self.state)
-            elif self.moving_down and pygame.time.get_ticks() - self.speed_timer >= 100:
+                temp = "character\\character_still"
+            elif self.moving_down and pygame.time.get_ticks() - self.speed_timer >= 60:
 
                 temp = self.maze.rows[self.row+1]
                 val = temp[self.col]
@@ -54,7 +54,7 @@ class Player(Sprite):
                 self.im.blitme()
                 self.speed_timer = pygame.time.get_ticks()
                 self.dir = 'down'
-                temp = "Player_down_" + str(self.state)
+                temp = "character\\character_still"
             elif self.moving_right and pygame.time.get_ticks() - self.speed_timer >= 100:
 
                 temp = self.maze.rows[self.row]
@@ -68,7 +68,7 @@ class Player(Sprite):
                 self.im.blitme()
                 self.speed_timer = pygame.time.get_ticks()
                 self.dir = 'right'
-                temp = "Player_right_" + str(self.state)
+                temp = "character\\r" + str(self.state)
             elif self.moving_left and pygame.time.get_ticks() - self.speed_timer >= 100:
 
                 temp = self.maze.rows[self.row]
@@ -79,7 +79,9 @@ class Player(Sprite):
                 self.im.blitme()
                 self.speed_timer = pygame.time.get_ticks()
                 self.dir = 'left'
-                temp = "Player_left_" + str(self.state)
+                temp = "character\\l" + str(self.state)
+            elif not (self.moving_left or self.moving_right or self.moving_up or self.moving_down) and pygame.time.get_ticks() - self.speed_timer >= 100:
+                temp = "character\\character_still"
             else:
                 return temp
             if self.rect.x < 0:
@@ -88,50 +90,15 @@ class Player(Sprite):
             elif self.rect.x > self.s_rect.width:
                 self.rect.centerx = 5
                 self.col = 0
-            if pygame.time.get_ticks() - self.sound_timer >= 500:
-                sound = pygame.mixer.Sound("sounds/pacman_chomp.wav")
-                sound.play()
-                self.sound_timer = pygame.time.get_ticks()
             self.rect = self.im.rect
-            self.im = ImageRect(self.screen, temp, 18, 18)
+            self.im = PhotoRect(self.screen, temp, 64, 64)
             self.im.rect = self.rect
-            if self.state >= 3:
+            if self.state >= 6:
                 self.state = 1
             else:
                 self.state += 1
         else:
-            if self.death_state == 1:
-                deathsound = pygame.mixer.Sound("sounds/pacmandies.wav")
-                deathsound.set_volume(1)
-                deathsound.play()
-            if pygame.time.get_ticks() - self.speed_timer >= 200 and self.death_state < 12:
-                temp = "Player_death_" + str(self.death_state)
-                self.death_state += 1
-                self.rect = self.im.rect
-                self.im = ImageRect(self.screen, temp, 18, 18)
-                self.im.rect = self.rect
-                self.speed_timer = pygame.time.get_ticks()
-            elif pygame.time.get_ticks() - self.speed_timer >= 200 and self.death_state >= 12:
-                self.finished = True
-
-    def create_portal(self, portal_num):
-        current_row = self.maze.rows[self.row]
-
-        if self.dir == 'right':
-            for x in range(self.col, len(current_row)):
-                if current_row[x] == 'R':
-                    current_row = current_row[:x] + str(portal_num) + current_row[x+1:]
-                    break
-        elif self.dir == 'left':
-            current_row = current_row[::-1]
-            for x in range(self.col, len(current_row)):
-                if current_row[x] == 'L':
-                    current_row = current_row[:x] + str(portal_num) + current_row[x+1:]
-                    current_row = current_row[::-1]
-                    break
-
-        self.maze.rows[self.row] = current_row
-        self.maze.update_walls()
+            self.finished = True
 
     def blitme(self):
         self.im.blitme()
