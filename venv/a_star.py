@@ -160,6 +160,7 @@ def main():
 
     obs_xpos, obs_ypos = [], []
 
+    rob_x_pos, rob_y_pos = a_star_alg(start_xpos, start_ypos, goal_xpos, goal_ypos, obs_xpos, obs_ypos, grid_size, robot_size)
 
 
 
