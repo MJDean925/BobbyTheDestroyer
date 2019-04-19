@@ -1,81 +1,168 @@
-class Vertex():
-    def __init__(self, parent=None, positionOf=None):
+import matplotlib.pyplot as cross
+import math
 
-        self.H = 0
-        self.G = 0
-        self.F = 0
-        self.positionOf = positionOf
-        self.parent = parent
-    def __eq__(self, other):
-        return self.positionOf == other.positionOf
-def a_star(map, begin, goal):
 
-    # Create begin and goal vertices
-    begin_node = Vertex(None, begin)
-    begin_node.G = begin_node.H = begin_node.F = 0
-    goal_node = Vertex(None, goal)
-    goal_node.G = goal_node.H = goal_node.F = 0
+class Vertex:
+    def __init__(self, x_pos, y_pos, cost, found):
+        self.x_pos = x_pos
+        self.y_pos = y_pos
+        self.cost = cost
+        self.found = found
 
-    # Initializing open and closed lists
-    open = []
-    closed = []
-    open.append(begin_node)
-    while len(open) > 0:
-        current = open[0]
-        indexOfCurrent = 0
-        for i, elements in enumerate(open):
-            if elements.F < current.F:
-                current = elements
-                indexOfCurrent = i
+    def __str__(self):
+        return str(self.x_pos) + "," + str(self.y_pos) + "," + str(self.cost) + "," + str(self.found)
 
-        open.pop(indexOfCurrent)
-        closed.append(current)
+def motion_mode():
+    move_cost = [[1, 0, 1], #d(x), d(y), cost
+            [0, 1, 1],
+            [-1, 0, 1],
+            [0, -1, 1],
+            [-1, -1, math.sqrt(2)],
+            [-1, 1, math.sqrt(2)],
+            [1, -1, math.sqrt(2)],
+            [1, 1, math.sqrt(2)]]
+    return move_cost
 
-        # Findind goal state
-        if current == goal_node:
-            route = []
-            current = current
-            while current is not None:
-                route.append(current.positionOf)
-                current = current.parent
-            return route[::-1]
-        # Generate child_array
-        child_array = []
-        for updated_positions in [(0, -1), (0, 1), (-1, 0), (1, 0), (-1, -1), (-1, 1), (1, -1), (1, 1)]: # all neighbor square
-            position_node = (current.positionOf[0] + updated_positions[0], current.positionOf[1] + updated_positions[1])
-            if position_node[0] > (len(map) - 1) or position_node[0] < 0 or position_node[1] > (len(map[len(map)-1]) -1) or position_node[1] < 0:
+def get_map_obs(obs_xpos, obs_ypos, resol, ver):
+    x_min = round(min(obs_xpos))
+    y_min = round(min(obs_ypos))
+    x_max = round(max(obs_xpos))
+    y_max = round(max(obs_ypos))
+    width_x = round(x_max - x_min)
+    width_y = round(y_max - y_min)
+    # obstacles on the map
+    obs_map = [[False for i in range(width_y)] for i in range(width_x)]
+    for i_x in range(width_x):
+        x_pos = i_x + x_min
+        for iy in range(width_y):
+            y_pos = iy + y_min
+            #  print(x_pos, y_pos)
+            for iox, ioy in zip(obs_xpos, obs_ypos):
+                dis = math.sqrt((iox - x_pos)**2 + (ioy - y_pos)**2)
+                if dis <= ver / resol:
+                    obs_map[i_x][iy] = True
+                    break
+    return obs_map, x_min, y_min, x_max, y_max, width_x, width_y
+
+def vert_valid(vertex, obs_map, x_min, y_min, x_max, y_max):
+    if vertex.x_pos < x_min:
+        return False
+    elif vertex.y_pos < y_min:
+        return False
+    elif vertex.x_pos >= x_max:
+        return False
+    elif vertex.y_pos >= y_max:
+        return False
+    if obs_map[vertex.x_pos][vertex.y_pos]:
+        return False
+    return True
+
+def get_index(vertex, width_x, min_x, min_y):
+    return (vertex.y_pos - min_y) * width_x + (vertex.x_pos - min_x)
+
+def ret_heuristic(node_1, node_2):
+    unit = 1.0  # unit cost of heuristic
+    dis = unit * math.sqrt((node_1.x_pos - node_2.x_pos)**2 + (node_1.y_pos - node_2.y_pos)**2)
+    return dis
+
+def final_path_calc(goal_n, closed_set, resol):
+    # calculates the final path
+    rob_x_pos, rob_y_pos = [goal_n.x_pos * resol], [goal_n.y_pos * resol]
+    found = goal_n.found
+    while found != -1:
+        n = closed_set[found]
+        rob_x_pos.append(n.x_pos * resol)
+        rob_y_pos.append(n.y_pos * resol)
+        found = n.found
+    return rob_x_pos, rob_y_pos
+
+#start_xpos:  x coordinate of the start point.
+#start_ypos:  y coordinate of the start point.
+#goal_xpos :  x coordinate of the goal point.
+#goal_ypos :  x coordinate of the goal point.
+#obs_xpos  :  list of Obstacles (x)
+#obs_ypos  :  ist of Obstacles (y)
+#resol     :  resolution of the grid
+#rob_rad   :  robot radius
+
+def a_star_alg(start_xpos, start_ypos, goal_xpos, goal_ypos, obs_xpos, obs_ypos, resol, rob_rad):
+
+    start_n = Vertex(round(start_xpos / resol), round(start_ypos / resol), 0.0, -1)
+    goal_n = Vertex(round(goal_xpos / resol), round(goal_ypos / resol), 0.0, -1)
+    obs_xpos = [iox / resol for iox in obs_xpos]
+    obs_ypos = [ioy / resol for ioy in obs_ypos]
+    obs_map, x_min, y_min, x_max, y_max, x_w, y_w = get_map_obs(obs_xpos, obs_ypos, resol, rob_rad)
+    move = motion_mode()
+    open_set, closed_set = dict(), dict()
+    open_set[get_index(start_n, x_w, x_min, y_min)] = start_n
+    while True:
+        c_num = min(
+            open_set, key=lambda o: open_set[o].cost + ret_heuristic(goal_n, open_set[o]))
+        current_node = open_set[c_num]
+        # shows the animation
+
+        if current_node.x_pos == goal_n.x_pos and current_node.y_pos == goal_n.y_pos:
+            print("Find goal")
+            goal_n.found = current_node.found
+            goal_n.cost = current_node.cost
+            break
+        # Removes an item from the open_set
+        del open_set[c_num]
+        # The item is added to the closed_set
+        closed_set[c_num] = current_node
+        # expanding the search grid based off of motion_mode
+        for i, _ in enumerate(move):
+            vertex = Vertex(current_node.x_pos + move[i][0],
+                        current_node.y_pos + move[i][1],
+                        current_node.cost + move[i][2], c_num)
+            node_num = get_index(vertex, x_w, x_min, y_min)
+            if node_num in closed_set:
                 continue
-            if map[position_node[0]][position_node[1]] != 0:
+            if not vert_valid(vertex, obs_map, x_min, y_min, x_max, y_max):
                 continue
-            newNode = Vertex(current, position_node)
-            child_array.append(newNode)
-        for child in child_array:
-            for seen_child in closed:
-                if child == seen_child:
-                    continue
-            # Create the F, G,H
-            child.G = current.G + 1
-            child.H = ((child.positionOf[0] - goal_node.positionOf[0]) ** 2) + ((child.positionOf[1] - goal_node.positionOf[1]) ** 2)
-            child.F = child.G + child.H
+            if node_num not in open_set:
+                open_set[node_num] = vertex  # check a new node
+            else:
+                if open_set[node_num].cost >= vertex.cost:
+                    # This route is the slected path so far
+                    open_set[node_num] = vertex
+    rob_x_pos, rob_y_pos = final_path_calc(goal_n, closed_set, resol)
+    return rob_x_pos, rob_y_pos
 
-            for open_vertex in open:
-                if child == open_vertex and child.G > open_vertex.G:
-                    continue
-            open.append(child)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 def main():
+    print(__file__ + " start!!")
 
-    map = [[1, 0, 0, 0, 1, 0, 0, 0, 0, 0],
-            [0, 0, 0, 0, 1, 0, 0, 0, 0, 0],
-            [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-            [0, 0, 0, 0, 1, 0, 0, 0, 0, 0],
-            [0, 0, 0, 0, 1, 0, 0, 0, 0, 0],
-            [0, 0, 0, 0, 1, 0, 0, 0, 0, 0]]
+    # start and goal position
+    start_xpos = 1.0  # [m]
+    start_ypos = 1.0  # [m]
+    goal_xpos = 6.0  # [m]
+    goal_ypos = 6.0  # [m]
+    grid_size = 1  # [m]
+    robot_size = 0.0  # [m]
 
-    begin = (0, 0)
-    goal = (5, 9)
+    obs_xpos, obs_ypos = [], []
 
-    route = a_star(map, begin, goal)
-    print(route)
+
+
+
 
 if __name__ == '__main__':
     main()
