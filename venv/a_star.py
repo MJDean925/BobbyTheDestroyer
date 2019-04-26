@@ -1,6 +1,7 @@
-import matplotlib.pyplot as cross
+import matplotlib.pyplot as mayMap
 import math
 
+animation = 1
 
 class Vertex:
     def __init__(self, x_pos, y_pos, cost, found):
@@ -100,9 +101,12 @@ def a_star_alg(start_xpos, start_ypos, goal_xpos, goal_ypos, obs_xpos, obs_ypos,
             open_set, key=lambda o: open_set[o].cost + ret_heuristic(goal_n, open_set[o]))
         current_node = open_set[c_num]
         # shows the animation
-
+        if animation:
+            mayMap.plot(current_node.x_pos * resol, current_node.y_pos * resol, "py")
+            if len(closed_set.keys()) % 10 == 0:
+                mayMap.pause(2)
         if current_node.x_pos == goal_n.x_pos and current_node.y_pos == goal_n.y_pos:
-            print("Find goal")
+            print("Path is found!")
             goal_n.found = current_node.found
             goal_n.cost = current_node.cost
             break
@@ -148,21 +152,194 @@ def a_star_alg(start_xpos, start_ypos, goal_xpos, goal_ypos, obs_xpos, obs_ypos,
 
 
 def main():
-    print(__file__ + " start!!")
+    print(__file__ + " Begin!")
 
     # start and goal position
     start_xpos = 1.0  # [m]
     start_ypos = 1.0  # [m]
-    goal_xpos = 6.0  # [m]
-    goal_ypos = 6.0  # [m]
-    grid_size = 1  # [m]
-    robot_size = 0.0  # [m]
+    goal_xpos = 13  # [m]
+    goal_ypos = 9.0  # [m]
+    matrix_size = 1.0  # [m]
+    rob_size = 0.0  # [m]
 
     obs_xpos, obs_ypos = [], []
 
-    rob_x_pos, rob_y_pos = a_star_alg(start_xpos, start_ypos, goal_xpos, goal_ypos, obs_xpos, obs_ypos, grid_size, robot_size)
+    for i in range(13):
+        obs_xpos.append(i)
+        obs_ypos.append(0.0)
+    for i in range(13):
+        obs_xpos.append(13.0)
+        obs_ypos.append(i)
+    for i in range(14):
+        obs_xpos.append(i)
+        obs_ypos.append(13.0)
+    for i in range(14):
+        obs_xpos.append(0.0)
+        obs_ypos.append(i)
+
+    #
+    # for i in range(50):
+    #     obs_xpos.append(i)
+    #     obs_ypos.append(0.0)
+    # for i in range(50):
+    #     obs_xpos.append(50.0)
+    #     obs_ypos.append(i)
+    # for i in range(51):
+    #     obs_xpos.append(i)
+    #     obs_ypos.append(50.0)
+    # for i in range(51):
+    #     obs_xpos.append(0.0)
+    #     obs_ypos.append(i)
+    #
+
+#######################################################
+    for i in range(1):
+        obs_xpos.append(12)
+        obs_ypos.append(i+7)
+#######################################################
+    for i in range(1):
+        obs_xpos.append(11)
+        obs_ypos.append(i+11)
+
+    for i in range(4):
+        obs_xpos.append(11)
+        obs_ypos.append(i+2)
+#######################################################
+    for i in range(1):
+        obs_xpos.append(10)
+        obs_ypos.append(i+11)
+    for i in range(1):
+        obs_xpos.append(10)
+        obs_ypos.append(i+9)
+    for i in range(4):
+        obs_xpos.append(10)
+        obs_ypos.append(i+2)
 
 
+
+######################################################
+    for i in range(1):
+        obs_xpos.append(9)
+        obs_ypos.append(i+11)
+
+    for i in range(1):
+        obs_xpos.append(9)
+        obs_ypos.append(i+9)
+
+
+#######################################################
+
+    for i in range(4):
+        obs_xpos.append(8)
+        obs_ypos.append(i+4)
+
+    for i in range(1):
+        obs_xpos.append(8)
+        obs_ypos.append(i+2)
+########################################################
+    for i in range(1):
+        obs_xpos.append(7)
+        obs_ypos.append(i+11)
+
+    for i in range(1):
+        obs_xpos.append(7)
+        obs_ypos.append(i+9)
+
+    for i in range(1):
+        obs_xpos.append(7)
+        obs_ypos.append(i+6)
+
+
+    for i in range(1):
+        obs_xpos.append(7)
+        obs_ypos.append(i+2)
+
+
+#######################################################
+
+
+    for i in range(1):
+        obs_xpos.append(6)
+        obs_ypos.append(i+11)
+
+    for i in range(1):
+        obs_xpos.append(6)
+        obs_ypos.append(i+9)
+
+    for i in range(1):
+        obs_xpos.append(6)
+        obs_ypos.append(i+6)
+
+
+    for i in range(1):
+        obs_xpos.append(6)
+        obs_ypos.append(i+2)
+
+
+
+#########################################################
+
+    for i in range(4):
+        obs_xpos.append(5)
+        obs_ypos.append(i+4)
+
+    for i in range(1):
+        obs_xpos.append(5)
+        obs_ypos.append(i+2)
+#########################################################
+
+    for i in range(1):
+        obs_xpos.append(4)
+        obs_ypos.append(i+11)
+    for i in range(1):
+        obs_xpos.append(4)
+        obs_ypos.append(i+9)
+
+##########################################################
+
+    for i in range(1):
+        obs_xpos.append(3)
+        obs_ypos.append(i+11)
+
+    for i in range(1):
+        obs_xpos.append(3)
+        obs_ypos.append(i+9)
+
+    for i in range(4):
+        obs_xpos.append(3)
+        obs_ypos.append(i+2)
+
+##########################################################
+
+    for i in range(1):
+        obs_xpos.append(2)
+        obs_ypos.append(i+11)
+
+
+    for i in range(4):
+        obs_xpos.append(2)
+        obs_ypos.append(i+2)
+
+##########################################################
+
+    for i in range(1):
+        obs_xpos.append(1)
+        obs_ypos.append(i+7)
+
+
+    if animation:
+        mayMap.plot(obs_xpos, obs_ypos, ".k")
+        mayMap.plot(start_xpos, start_ypos, "og")
+        mayMap.plot(goal_xpos, goal_ypos, "oy")
+        mayMap.grid(False)
+        mayMap.axis("square")
+
+    rob_x_pos, rob_y_pos = a_star_alg(start_xpos, start_ypos, goal_xpos, goal_ypos, obs_xpos, obs_ypos, matrix_size, rob_size)
+
+    if animation:
+        mayMap.plot(rob_x_pos, rob_y_pos, "-r")
+        mayMap.show()
+        exit()
 
 
 if __name__ == '__main__':
