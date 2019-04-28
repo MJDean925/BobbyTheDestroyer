@@ -4,6 +4,8 @@ from Level import Level
 from Player import Player
 import os
 from pygame.sprite import Group
+from enemy import Guard
+from bomb import Bomb
 
 
 class Game:
@@ -24,7 +26,9 @@ class Game:
         my_file = os.path.join(this_folder, 'maze.txt')
         self.level = Level(self.screen, my_file)
         self.player = Player(self.screen, 1, 1, self.level)
-        self.game_active =True
+        self.guard = Guard(self.screen, 2, 1, self.player, self.level)
+        self.bomb = Bomb(screen, 3, 5, self.player, self.guard)
+        self.game_active = True
 
     def update_screen(self):
 
@@ -35,6 +39,8 @@ class Game:
 
             self.player.update()
             self.player.blitme()
+            # self.guard.update()
+            # self.guard.blitme()
 
         pygame.display.flip()
 

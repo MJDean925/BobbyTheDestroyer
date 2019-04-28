@@ -1,7 +1,9 @@
-import a_star
+from a_star import a_star_alg
+from photo_rect import PhotoRect
+
 
 class Guard:
-    def __init__(self, row, col, pat1, pat2, player):
+    def __init__(self, screen, row, col, player, level):
         self.row = row
         self.col = col
 
@@ -9,181 +11,190 @@ class Guard:
         self.goal_row = 9.0  # [m]
         self.matrix_size = 1.0  # [m]
         self.rob_size = 0.0  # [m]
-        self.prepare()
+        self.player = player
+        self.level = level
         self.pathx, self.pathy = [], []
-        self.ph = PhotoRect(self.screen, self.filename + self.dir + '_' + str(self.state), 18, 18)
+        self.ph = PhotoRect(screen, "enemy\\enemy_v1_moving_down", 64, 64)
         self.rect = self.ph.rect
-
+        self.obs_col = []
+        self.obs_row = []
+        self.prepare()
 
     def prepare(self):
-        obs_col, obs_row = [], []
 
         for i in range(13):
-            obs_col.append(i)
-            obs_row.append(0.0)
+            self.obs_col.append(i)
+            self.obs_row.append(0.0)
         for i in range(13):
-            obs_col.append(13.0)
-            obs_row.append(i)
+            self.obs_col.append(13.0)
+            self.obs_row.append(i)
         for i in range(14):
-            obs_col.append(i)
-            obs_row.append(13.0)
+            self.obs_col.append(i)
+            self.obs_row.append(13.0)
         for i in range(14):
-            obs_col.append(0.0)
-            obs_row.append(i)
+            self.obs_col.append(0.0)
+            self.obs_row.append(i)
 
         #
         # for i in range(50):
-        #     obs_col.append(i)
-        #     obs_row.append(0.0)
+        #     self.obs_col.append(i)
+        #     self.obs_row.append(0.0)
         # for i in range(50):
-        #     obs_col.append(50.0)
-        #     obs_row.append(i)
+        #     self.obs_col.append(50.0)
+        #     self.obs_row.append(i)
         # for i in range(51):
-        #     obs_col.append(i)
-        #     obs_row.append(50.0)
+        #     self.obs_col.append(i)
+        #     self.obs_row.append(50.0)
         # for i in range(51):
-        #     obs_col.append(0.0)
-        #     obs_row.append(i)
+        #     self.obs_col.append(0.0)
+        #     self.obs_row.append(i)
         #
 
         #######################################################
         for i in range(1):
-            obs_col.append(12)
-            obs_row.append(i + 7)
+            self.obs_col.append(12)
+            self.obs_row.append(i + 7)
         #######################################################
         for i in range(1):
-            obs_col.append(11)
-            obs_row.append(i + 11)
+            self.obs_col.append(11)
+            self.obs_row.append(i + 11)
 
         for i in range(4):
-            obs_col.append(11)
-            obs_row.append(i + 2)
+            self.obs_col.append(11)
+            self.obs_row.append(i + 2)
         #######################################################
         for i in range(1):
-            obs_col.append(10)
-            obs_row.append(i + 11)
+            self.obs_col.append(10)
+            self.obs_row.append(i + 11)
         for i in range(1):
-            obs_col.append(10)
-            obs_row.append(i + 9)
+            self.obs_col.append(10)
+            self.obs_row.append(i + 9)
         for i in range(4):
-            obs_col.append(10)
-            obs_row.append(i + 2)
+            self.obs_col.append(10)
+            self.obs_row.append(i + 2)
 
         ######################################################
         for i in range(1):
-            obs_col.append(9)
-            obs_row.append(i + 11)
+            self.obs_col.append(9)
+            self.obs_row.append(i + 11)
 
         for i in range(1):
-            obs_col.append(9)
-            obs_row.append(i + 9)
+            self.obs_col.append(9)
+            self.obs_row.append(i + 9)
 
         #######################################################
 
         for i in range(4):
-            obs_col.append(8)
-            obs_row.append(i + 4)
+            self.obs_col.append(8)
+            self.obs_row.append(i + 4)
 
         for i in range(1):
-            obs_col.append(8)
-            obs_row.append(i + 2)
+            self.obs_col.append(8)
+            self.obs_row.append(i + 2)
         ########################################################
         for i in range(1):
-            obs_col.append(7)
-            obs_row.append(i + 11)
+            self.obs_col.append(7)
+            self.obs_row.append(i + 11)
 
         for i in range(1):
-            obs_col.append(7)
-            obs_row.append(i + 9)
+            self.obs_col.append(7)
+            self.obs_row.append(i + 9)
 
         for i in range(1):
-            obs_col.append(7)
-            obs_row.append(i + 6)
+            self.obs_col.append(7)
+            self.obs_row.append(i + 6)
 
         for i in range(1):
-            obs_col.append(7)
-            obs_row.append(i + 2)
+            self.obs_col.append(7)
+            self.obs_row.append(i + 2)
 
         #######################################################
 
         for i in range(1):
-            obs_col.append(6)
-            obs_row.append(i + 11)
+            self.obs_col.append(6)
+            self.obs_row.append(i + 11)
 
         for i in range(1):
-            obs_col.append(6)
-            obs_row.append(i + 9)
+            self.obs_col.append(6)
+            self.obs_row.append(i + 9)
 
         for i in range(1):
-            obs_col.append(6)
-            obs_row.append(i + 6)
+            self.obs_col.append(6)
+            self.obs_row.append(i + 6)
 
         for i in range(1):
-            obs_col.append(6)
-            obs_row.append(i + 2)
+            self.obs_col.append(6)
+            self.obs_row.append(i + 2)
 
         #########################################################
 
         for i in range(4):
-            obs_col.append(5)
-            obs_row.append(i + 4)
+            self.obs_col.append(5)
+            self.obs_row.append(i + 4)
 
         for i in range(1):
-            obs_col.append(5)
-            obs_row.append(i + 2)
+            self.obs_col.append(5)
+            self.obs_row.append(i + 2)
         #########################################################
 
         for i in range(1):
-            obs_col.append(4)
-            obs_row.append(i + 11)
+            self.obs_col.append(4)
+            self.obs_row.append(i + 11)
         for i in range(1):
-            obs_col.append(4)
-            obs_row.append(i + 9)
+            self.obs_col.append(4)
+            self.obs_row.append(i + 9)
 
         ##########################################################
 
         for i in range(1):
-            obs_col.append(3)
-            obs_row.append(i + 11)
+            self.obs_col.append(3)
+            self.obs_row.append(i + 11)
 
         for i in range(1):
-            obs_col.append(3)
-            obs_row.append(i + 9)
+            self.obs_col.append(3)
+            self.obs_row.append(i + 9)
 
         for i in range(4):
-            obs_col.append(3)
-            obs_row.append(i + 2)
+            self.obs_col.append(3)
+            self.obs_row.append(i + 2)
 
         ##########################################################
 
         for i in range(1):
-            obs_col.append(2)
-            obs_row.append(i + 11)
+            self.obs_col.append(2)
+            self.obs_row.append(i + 11)
 
         for i in range(4):
-            obs_col.append(2)
-            obs_row.append(i + 2)
+            self.obs_col.append(2)
+            self.obs_row.append(i + 2)
 
         ##########################################################
 
         for i in range(1):
-            obs_col.append(1)
-            obs_row.append(i + 7)
-
+            self.obs_col.append(1)
+            self.obs_row.append(i + 7)
+        self.get_path(self.goal_row, self.goal_col)
 
     def get_path(self, grow, gcol):
         self.goal_col, self.goal_row = gcol, grow
-        self.pathx, self.pathy = a_star_alg(self.col, self.row, gcol, grow, self.matrix_size, self.rob_size)
+        self.pathx, self.pathy = a_star_alg(self.col, self.row, gcol, grow, self.obs_row, self.obs_col,
+                                            self.matrix_size, self.rob_size)
 
+    def update(self):
 
-    def move(self):
+        self.sight()
         if self.row == self.goal_row and self.col == self.goal_col:
             if self.row == self.prow1 and self.col == pcol1:
                 self.get_path(self.prow2, self.pcol2)
-            if self.row == self.prow1 and self.col == pcol1:
+            elif self.row == self.prow1 and self.col == pcol1:
                 self.get_path(self.prow1, self.pcol1)
             else:
-                GetPath(self.CurrentPosition, self.GoalPos)
+                self.get_path(self.prow1, self.pcol1)
+            self.col = self.pathx.pop()
+            self.row = self.pathy.pop()
+            self.ph.rect.centerx = self.col * 64
+            self.ph.rect.centery = self.row * 64
+            self.rect = self.ph.rect
         elif self.row != self.goal_row and self.col != self.goal_col:
             self.col = self.pathx.pop()
             self.row = self.pathy.pop()
@@ -191,13 +202,13 @@ class Guard:
             self.ph.rect.centery = self.row * 64
             self.rect = self.ph.rect
 
+    def blitme(self):
+        self.ph.blitme()
 
-
-    def seen(self, prow, pcol):
-
-
-        self.GoalPos = player position
-        self.Path = A_Star(self.CurrentPosition, self.GoalPos)
-
-
-
+    def sight(self):
+        if self.player.row == self.row:
+            if player.col < self.col:
+                for x in range(player.col, self.col):
+                    if self.level.rows[self.row][x] == 'M':
+                        return false
+                self.get_path(player.row, player.col)

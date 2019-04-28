@@ -1,4 +1,4 @@
-import matplotlib.pyplot as mayMap
+
 import math
 
 animation = 1
@@ -109,10 +109,10 @@ def a_star_alg(start_xpos, start_ypos, goal_xpos, goal_ypos, obs_xpos, obs_ypos,
             open_set, key=lambda o: open_set[o].cost + ret_heuristic(goal_n, open_set[o]))
         current_node = open_set[c_num]
         # shows the animation
-        if animation:
-            mayMap.plot(current_node.x_pos * resol, current_node.y_pos * resol, "py")
-            if len(closed_set.keys()) % 10 == 0:
-                mayMap.pause(2)
+        #if animation:
+        #    mayMap.plot(current_node.x_pos * resol, current_node.y_pos * resol, "py")
+         #   if len(closed_set.keys()) % 10 == 0:
+        #        mayMap.pause(2)
         if current_node.x_pos == goal_n.x_pos and current_node.y_pos == goal_n.y_pos:
             print("Path is found!")
             goal_n.found = current_node.found

@@ -10,8 +10,8 @@ class Player(Sprite):
         self.screen = screen
         self.s_rect = screen.get_rect()
         self.im = PhotoRect(screen, "character\\character_still", 64, 64)
-        self.im.rect.centerx = col*64 +32
-        self.im.rect.centery = row*64 +32
+        self.im.rect.centerx = col*64 + 32
+        self.im.rect.centery = row*64 + 32
         self.maze = maze
         self.rect = self.im.rect
         self.moving_up = False
@@ -44,7 +44,7 @@ class Player(Sprite):
                 self.speed_timer = pygame.time.get_ticks()
                 self.dir = 'up'
                 temp = "character\\character_still"
-            elif self.moving_down and pygame.time.get_ticks() - self.speed_timer >= 60:
+            elif self.moving_down and pygame.time.get_ticks() - self.speed_timer >= 100:
 
                 temp = self.maze.rows[self.row+1]
                 val = temp[self.col]
@@ -80,16 +80,12 @@ class Player(Sprite):
                 self.speed_timer = pygame.time.get_ticks()
                 self.dir = 'left'
                 temp = "character\\l" + str(self.state)
-            elif not (self.moving_left or self.moving_right or self.moving_up or self.moving_down) and pygame.time.get_ticks() - self.speed_timer >= 100:
+            elif not (self.moving_left or self.moving_right or self.moving_up or self.moving_down) \
+                    and pygame.time.get_ticks() - self.speed_timer >= 100:
                 temp = "character\\character_still"
             else:
                 return temp
-            if self.rect.x < 0:
-                self.rect.centerx = 275
-                self.col = 27
-            elif self.rect.x > self.s_rect.width:
-                self.rect.centerx = 5
-                self.col = 0
+
             self.rect = self.im.rect
             self.im = PhotoRect(self.screen, temp, 64, 64)
             self.im.rect = self.rect
