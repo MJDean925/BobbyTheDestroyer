@@ -3,6 +3,7 @@ import math
 
 animation = 1
 
+
 class Vertex:
     def __init__(self, x_pos, y_pos, cost, found):
         self.x_pos = x_pos
@@ -12,6 +13,7 @@ class Vertex:
 
     def __str__(self):
         return str(self.x_pos) + "," + str(self.y_pos) + "," + str(self.cost) + "," + str(self.found)
+
 
 def motion_mode():
     move_cost = [[1, 0, 1], #d(x), d(y), cost
@@ -23,6 +25,7 @@ def motion_mode():
             [1, -1, math.sqrt(2)],
             [1, 1, math.sqrt(2)]]
     return move_cost
+
 
 def get_map_obs(obs_xpos, obs_ypos, resol, ver):
     x_min = round(min(obs_xpos))
@@ -45,6 +48,7 @@ def get_map_obs(obs_xpos, obs_ypos, resol, ver):
                     break
     return obs_map, x_min, y_min, x_max, y_max, width_x, width_y
 
+
 def vert_valid(vertex, obs_map, x_min, y_min, x_max, y_max):
     if vertex.x_pos < x_min:
         return False
@@ -58,13 +62,16 @@ def vert_valid(vertex, obs_map, x_min, y_min, x_max, y_max):
         return False
     return True
 
+
 def get_index(vertex, width_x, min_x, min_y):
     return (vertex.y_pos - min_y) * width_x + (vertex.x_pos - min_x)
+
 
 def ret_heuristic(node_1, node_2):
     unit = 1.0  # unit cost of heuristic
     dis = unit * math.sqrt((node_1.x_pos - node_2.x_pos)**2 + (node_1.y_pos - node_2.y_pos)**2)
     return dis
+
 
 def final_path_calc(goal_n, closed_set, resol):
     # calculates the final path
@@ -77,14 +84,15 @@ def final_path_calc(goal_n, closed_set, resol):
         found = n.found
     return rob_x_pos, rob_y_pos
 
-#start_xpos:  x coordinate of the start point.
-#start_ypos:  y coordinate of the start point.
-#goal_xpos :  x coordinate of the goal point.
-#goal_ypos :  x coordinate of the goal point.
-#obs_xpos  :  list of Obstacles (x)
-#obs_ypos  :  ist of Obstacles (y)
-#resol     :  resolution of the grid
-#rob_rad   :  robot radius
+# start_xpos:  x coordinate of the start point.
+# start_ypos:  y coordinate of the start point.
+# goal_xpos :  x coordinate of the goal point.
+# goal_ypos :  x coordinate of the goal point.
+# obs_xpos  :  list of Obstacles (x)
+# obs_ypos  :  ist of Obstacles (y)
+# resol     :  resolution of the grid
+# rob_rad   :  robot radius
+
 
 def a_star_alg(start_xpos, start_ypos, goal_xpos, goal_ypos, obs_xpos, obs_ypos, resol, rob_rad):
 
@@ -132,23 +140,6 @@ def a_star_alg(start_xpos, start_ypos, goal_xpos, goal_ypos, obs_xpos, obs_ypos,
                     open_set[node_num] = vertex
     rob_x_pos, rob_y_pos = final_path_calc(goal_n, closed_set, resol)
     return rob_x_pos, rob_y_pos
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 def main():

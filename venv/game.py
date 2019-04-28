@@ -20,8 +20,8 @@ class Game:
         self.lost = False
         pygame.display.set_caption("AI game")
         self.clock = pygame.time.Clock()
-        THIS_FOLDER = os.path.dirname(os.path.abspath(__file__))
-        my_file = os.path.join(THIS_FOLDER, 'maze.txt')
+        this_folder = os.path.dirname(os.path.abspath(__file__))
+        my_file = os.path.join(this_folder, 'maze.txt')
         self.level = Level(self.screen, my_file)
         self.player = Player(self.screen, 1, 1, self.level)
         self.game_active =True
