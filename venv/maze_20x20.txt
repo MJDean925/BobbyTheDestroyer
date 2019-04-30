@@ -1,20 +1,20 @@
-IGGGMMMMGMMGMMMMGGGJ
-E        MM        F
-E MMMMMM    MMM MM F
-E  M     FE MMG GG F
-MM M MM MMM GG  HH F
-E     M  FE HH HMM F   
-E MMMMMM    MM MMMMM
-E       MMH        F
-EFM MMM      M MMM F
-EFI M    MMM M M   F
-EBA M MM   M   MMK F
-EDC M    MMMMM   MMM
-EFK MM M       M   F
-EFM M  MMMMMM MMMK F
-E              M   F
-MI JMMMMM  MMM MI  F
-E     MMM  MMM     F
-MMMI   MMEFMM   JMMM
-E    M  GABG  M    F
-KHHHHMMHHHHHHMMHHHHL
+MMMMMMMMMMMMMMMMMMMM
+M        MM        M
+M MMMMMM    MMM MM M
+M  M      M MM     M
+MM M MM MMM     MM M
+M     M   M MM MMM M
+M MMMMMM    MM MMMMM
+M       MMM        M
+M M MMM      M MMM M
+M M M    MMM M M   M
+M   M MM   M   MMM M
+M   M    MMMMM   MMM
+M M MM M       M   M
+M M M  MMMMMM MMMM M
+M              M   M
+MM MMMMM MM MM MM  M
+M     MM    MM     M
+MMMM   MM  MM   MMMM
+M    M        M    M
+MMMMMMMMMMMMMMMMMMMM
