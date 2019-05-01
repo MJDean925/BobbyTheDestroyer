@@ -1,6 +1,6 @@
 import matplotlib.pyplot as mayMap         # can be deleted
 import math
-animation = 1 # can be deleted
+animation = 0 # can be deleted
 
 class Vertex:
     def __init__(self, x_pos, y_pos, cost, found):
