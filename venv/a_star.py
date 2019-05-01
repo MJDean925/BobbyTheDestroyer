@@ -1,8 +1,6 @@
-
+import matplotlib.pyplot as mayMap         # can be deleted
 import math
-
-animation = 1
-
+animation = 1 # can be deleted
 
 class Vertex:
     def __init__(self, x_pos, y_pos, cost, found):
@@ -14,7 +12,6 @@ class Vertex:
     def __str__(self):
         return str(self.x_pos) + "," + str(self.y_pos) + "," + str(self.cost) + "," + str(self.found)
 
-
 def motion_mode():
     move_cost = [[1, 0, 1], #d(x), d(y), cost
             [0, 1, 1],
@@ -25,7 +22,6 @@ def motion_mode():
             [1, -1, math.sqrt(2)],
             [1, 1, math.sqrt(2)]]
     return move_cost
-
 
 def get_map_obs(obs_xpos, obs_ypos, resol, ver):
     x_min = round(min(obs_xpos))
@@ -48,7 +44,6 @@ def get_map_obs(obs_xpos, obs_ypos, resol, ver):
                     break
     return obs_map, x_min, y_min, x_max, y_max, width_x, width_y
 
-
 def vert_valid(vertex, obs_map, x_min, y_min, x_max, y_max):
     if vertex.x_pos < x_min:
         return False
@@ -62,16 +57,13 @@ def vert_valid(vertex, obs_map, x_min, y_min, x_max, y_max):
         return False
     return True
 
-
 def get_index(vertex, width_x, min_x, min_y):
     return (vertex.y_pos - min_y) * width_x + (vertex.x_pos - min_x)
-
 
 def ret_heuristic(node_1, node_2):
     unit = 1.0  # unit cost of heuristic
     dis = unit * math.sqrt((node_1.x_pos - node_2.x_pos)**2 + (node_1.y_pos - node_2.y_pos)**2)
     return dis
-
 
 def final_path_calc(goal_n, closed_set, resol):
     # calculates the final path
@@ -84,15 +76,14 @@ def final_path_calc(goal_n, closed_set, resol):
         found = n.found
     return rob_x_pos, rob_y_pos
 
-# start_xpos:  x coordinate of the start point.
-# start_ypos:  y coordinate of the start point.
-# goal_xpos :  x coordinate of the goal point.
-# goal_ypos :  x coordinate of the goal point.
-# obs_xpos  :  list of Obstacles (x)
-# obs_ypos  :  ist of Obstacles (y)
-# resol     :  resolution of the grid
-# rob_rad   :  robot radius
-
+#start_xpos:  x coordinate of the start point.
+#start_ypos:  y coordinate of the start point.
+#goal_xpos :  x coordinate of the goal point.
+#goal_ypos :  x coordinate of the goal point.
+#obs_xpos  :  list of Obstacles (x)
+#obs_ypos  :  ist of Obstacles (y)
+#resol     :  resolution of the grid
+#rob_rad   :  robot radius
 
 def a_star_alg(start_xpos, start_ypos, goal_xpos, goal_ypos, obs_xpos, obs_ypos, resol, rob_rad):
 
@@ -109,12 +100,12 @@ def a_star_alg(start_xpos, start_ypos, goal_xpos, goal_ypos, obs_xpos, obs_ypos,
             open_set, key=lambda o: open_set[o].cost + ret_heuristic(goal_n, open_set[o]))
         current_node = open_set[c_num]
         # shows the animation
-        #if animation:
-        #    mayMap.plot(current_node.x_pos * resol, current_node.y_pos * resol, "py")
-         #   if len(closed_set.keys()) % 10 == 0:
-        #        mayMap.pause(2)
+        if animation:  # can be deleted
+            mayMap.plot(current_node.x_pos * resol, current_node.y_pos * resol, "py")
+            if len(closed_set.keys()) % 10 == 0:
+                mayMap.pause(2)
         if current_node.x_pos == goal_n.x_pos and current_node.y_pos == goal_n.y_pos:
-            print("Path is found!")
+            #print("Path is found!")   # can be delted
             goal_n.found = current_node.found
             goal_n.cost = current_node.cost
             break
@@ -138,20 +129,39 @@ def a_star_alg(start_xpos, start_ypos, goal_xpos, goal_ypos, obs_xpos, obs_ypos,
                 if open_set[node_num].cost >= vertex.cost:
                     # This route is the slected path so far
                     open_set[node_num] = vertex
+
     rob_x_pos, rob_y_pos = final_path_calc(goal_n, closed_set, resol)
+
     return rob_x_pos, rob_y_pos
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 def main():
-    print(__file__ + " Begin!")
 
     # start and goal position
     start_xpos = 1.0  # [m]
     start_ypos = 1.0  # [m]
-    goal_xpos = 13  # [m]
+    goal_xpos = 12  # [m]
     goal_ypos = 9.0  # [m]
     matrix_size = 1.0  # [m]
     rob_size = 0.0  # [m]
+    index = 0
 
     obs_xpos, obs_ypos = [], []
 
@@ -168,20 +178,6 @@ def main():
         obs_xpos.append(0.0)
         obs_ypos.append(i)
 
-    #
-    # for i in range(50):
-    #     obs_xpos.append(i)
-    #     obs_ypos.append(0.0)
-    # for i in range(50):
-    #     obs_xpos.append(50.0)
-    #     obs_ypos.append(i)
-    # for i in range(51):
-    #     obs_xpos.append(i)
-    #     obs_ypos.append(50.0)
-    # for i in range(51):
-    #     obs_xpos.append(0.0)
-    #     obs_ypos.append(i)
-    #
 
 #######################################################
     for i in range(1):
@@ -317,17 +313,24 @@ def main():
         obs_xpos.append(1)
         obs_ypos.append(i+7)
 
-
-    if animation:
+    #
+    if animation:    # can be deleted
         mayMap.plot(obs_xpos, obs_ypos, ".k")
         mayMap.plot(start_xpos, start_ypos, "og")
         mayMap.plot(goal_xpos, goal_ypos, "oy")
         mayMap.grid(False)
         mayMap.axis("square")
 
-    rob_x_pos, rob_y_pos = a_star_alg(start_xpos, start_ypos, goal_xpos, goal_ypos, obs_xpos, obs_ypos, matrix_size, rob_size)
 
-    if animation:
+
+
+    rob_x_pos, rob_y_pos = a_star_alg(start_xpos, start_ypos, goal_xpos, goal_ypos, obs_xpos, obs_ypos, matrix_size, rob_size)
+    rob_x_pos.reverse()
+    rob_y_pos.reverse()
+    print(rob_x_pos)   # all x positions of the path
+    print(rob_y_pos)   # all y positions of the path
+    #
+    if animation:   # can be deleted
         mayMap.plot(rob_x_pos, rob_y_pos, "-r")
         mayMap.show()
         exit()
