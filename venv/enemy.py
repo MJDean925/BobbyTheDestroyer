@@ -234,9 +234,21 @@ class Guard:
                             return False
                     self.seen = True
                     self.get_path(self.player.row, self.player.col)
+                elif self.player.col > self.col:
+                    for x in range(int(self.col), self.player.col):
+                        if self.level.rows[int(self.row)][x] == 'M':
+                            return False
+                    self.seen = True
+                    self.get_path(self.player.row, self.player.col)
             elif self.player.col == self.col:
                 if self.player.row < self.row:
                     for x in range(self.player.row, int(self.row)):
+                        if self.level.rows[x][int(self.col)] == 'M':
+                            return False
+                    self.seen = True
+                    self.get_path(self.player.row, self.player.col)
+                elif self.player.row > self.row:
+                    for x in range(int(self.row), self.player.row):
                         if self.level.rows[x][int(self.col)] == 'M':
                             return False
                     self.seen = True
