@@ -9,7 +9,8 @@ class Player(Sprite):
         super(Player, self).__init__()
         self.screen = screen
         self.s_rect = screen.get_rect()
-        self.im = PhotoRect(screen, "character\\character_still", 64, 64)
+        self.im = PhotoRect(screen, "character\\character_up\\character_up_1", 64, 64)
+
         self.im.rect.centerx = col*64 + 32
         self.im.rect.centery = row*64 + 32
         self.maze = maze
@@ -43,7 +44,7 @@ class Player(Sprite):
                 self.im.blitme()
                 self.speed_timer = pygame.time.get_ticks()
                 self.dir = 'up'
-                temp = "character\\character_still"
+                temp = "character\\character_up\\character_up_" + str(self.state)
             elif self.moving_down and pygame.time.get_ticks() - self.speed_timer >= 100:
 
                 temp = self.maze.rows[self.row+1]
@@ -54,7 +55,7 @@ class Player(Sprite):
                 self.im.blitme()
                 self.speed_timer = pygame.time.get_ticks()
                 self.dir = 'down'
-                temp = "character\\character_still"
+                temp = "character\\character_down\\character_down_" +str(self.state)
             elif self.moving_right and pygame.time.get_ticks() - self.speed_timer >= 100:
 
                 temp = self.maze.rows[self.row]
@@ -68,7 +69,7 @@ class Player(Sprite):
                 self.im.blitme()
                 self.speed_timer = pygame.time.get_ticks()
                 self.dir = 'right'
-                temp = "character\\r" + str(self.state)
+                temp = "character\\character_right\\character_right_" + str(self.state)
             elif self.moving_left and pygame.time.get_ticks() - self.speed_timer >= 100:
 
                 temp = self.maze.rows[self.row]
@@ -79,10 +80,10 @@ class Player(Sprite):
                 self.im.blitme()
                 self.speed_timer = pygame.time.get_ticks()
                 self.dir = 'left'
-                temp = "character\\l" + str(self.state)
+                temp = "character\\character_left\\character_left_" + str(self.state)
             elif not (self.moving_left or self.moving_right or self.moving_up or self.moving_down) \
                     and pygame.time.get_ticks() - self.speed_timer >= 100:
-                temp = "character\\character_still"
+                temp = "character\\character_right\\character_right_1"
             else:
                 return temp
 

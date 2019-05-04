@@ -1,4 +1,4 @@
-import matplotlib.pyplot as mayMap         # can be deleted
+#import matplotlib.pyplot as mayMap         # can be deleted
 import math
 animation = 0 # can be deleted
 
