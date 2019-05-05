@@ -22,7 +22,7 @@ class Player(Sprite):
         self.speed = 64
         self.state = 1
         self.death_state = 1
-        self.dir = ""
+        self.dir = "right"
         self.speed_timer = pygame.time.get_ticks()
         self.row = row
         self.col = col
@@ -55,7 +55,7 @@ class Player(Sprite):
                 self.im.blitme()
                 self.speed_timer = pygame.time.get_ticks()
                 self.dir = 'down'
-                temp = "character\\character_down\\character_down_" +str(self.state)
+                temp = "character\\character_down\\character_down_" + str(self.state)
             elif self.moving_right and pygame.time.get_ticks() - self.speed_timer >= 100:
 
                 temp = self.maze.rows[self.row]
@@ -83,7 +83,8 @@ class Player(Sprite):
                 temp = "character\\character_left\\character_left_" + str(self.state)
             elif not (self.moving_left or self.moving_right or self.moving_up or self.moving_down) \
                     and pygame.time.get_ticks() - self.speed_timer >= 100:
-                temp = "character\\character_right\\character_right_1"
+                temp = "character\\character_" + self.dir + "\\character_" + self.dir + "_1"
+                self.state = 1
             else:
                 return temp
 

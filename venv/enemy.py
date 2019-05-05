@@ -14,6 +14,7 @@ class Guard:
         self.rob_size = 0.0  # [m]
         self.player = player
         self.level = level
+        self.velocity = 120
         self.pathx, self.pathy = [], []
         self.ph = PhotoRect(self.screen, "enemy\\enemy_down\\enemy_down_1", 64, 64)
         self.ph.rect.centerx = col * 64 + 32
@@ -182,7 +183,7 @@ class Guard:
 
     def update(self):
 
-        if pygame.time.get_ticks() - self.speed_timer >= 2000:
+        if pygame.time.get_ticks() - self.speed_timer >= self.velocity:
             self.speed_timer = pygame.time.get_ticks()
             if self.row == self.player.row and self.col == self.player.col:
                 self.player.dead = True
@@ -199,8 +200,7 @@ class Guard:
                     self.get_path(self.prow1, self.pcol1)
                 else:
                     self.get_path(self.prow1, self.pcol1)
-                if not self.seen:
-                    self.sight()
+
                 self.col = self.pathx.pop()
                 self.row = self.pathy.pop()
                 self.ph.rect.centerx = self.col * 64 + 32
@@ -212,8 +212,7 @@ class Guard:
                 self.ph.rect.centerx = self.col * 64 + 32
                 self.ph.rect.centery = self.row * 64 + 32
                 self.rect = self.ph.rect
-                if not self.seen:
-                    self.sight()
+
         if pygame.time.get_ticks() - self.anim_timer >= 10:
             self.anim_timer = pygame.time.get_ticks()
             if self.state < 10:
@@ -226,7 +225,7 @@ class Guard:
             self.ph.rect = self.rect
 
     def sight(self):
-        if not self.player.dead:
+        if not self.player.dead and not self.seen:
             if self.player.row == self.row:
                 if self.player.col < self.col:
                     for x in range(self.player.col, int(self.col)):
@@ -253,7 +252,9 @@ class Guard:
                             return False
                     self.seen = True
                     self.get_path(self.player.row, self.player.col)
+
+    def faster(self):
+        self.velocity = self.velocity * 0.8
+
     def blitme(self):
         self.ph.blitme()
-
-

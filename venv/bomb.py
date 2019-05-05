@@ -34,6 +34,7 @@ class Bomb(Sprite):
                 self.timer = pygame.time.get_ticks()
                 # Check guards for if they hear it in this spot
                 self.guard.get_path(self.row, self.col)
+                self.guard.faster()
             elif self.detonating and pygame.time.get_ticks() - self.timer >= 100:
                 self.timer = pygame.time.get_ticks()
                 temp = "bomb\\bomb_" + str(self.state)

@@ -3,19 +3,11 @@
   <component name="ChangeListManager">
     <list default="true" id="10be5916-22bb-4250-931f-e5b0c35abfad" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/Level.py" beforeDir="false" afterPath="$PROJECT_DIR$/venv/Level.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/venv/Player.py" beforeDir="false" afterPath="$PROJECT_DIR$/venv/Player.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/venv/a_star.py" beforeDir="false" afterPath="$PROJECT_DIR$/venv/a_star.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/venv/bomb.py" beforeDir="false" afterPath="$PROJECT_DIR$/venv/bomb.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/venv/enemy.py" beforeDir="false" afterPath="$PROJECT_DIR$/venv/enemy.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/venv/game.py" beforeDir="false" afterPath="$PROJECT_DIR$/venv/game.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/graphic/character/charcter_right/character_right_1.png" beforeDir="false" afterPath="$PROJECT_DIR$/venv/graphic/character/character_right/character_right_1.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/graphic/character/charcter_right/character_right_2.png" beforeDir="false" afterPath="$PROJECT_DIR$/venv/graphic/character/character_right/character_right_2.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/graphic/character/charcter_right/character_right_3.png" beforeDir="false" afterPath="$PROJECT_DIR$/venv/graphic/character/character_right/character_right_3.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/graphic/character/charcter_right/character_right_4.png" beforeDir="false" afterPath="$PROJECT_DIR$/venv/graphic/character/character_right/character_right_4.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/graphic/character/charcter_right/character_right_5.png" beforeDir="false" afterPath="$PROJECT_DIR$/venv/graphic/character/character_right/character_right_5.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/graphic/character/charcter_right/character_right_6.png" beforeDir="false" afterPath="$PROJECT_DIR$/venv/graphic/character/character_right/character_right_6.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/maze_old.txt" beforeDir="false" afterPath="$PROJECT_DIR$/venv/maze_old.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/venv/photo_rect.py" beforeDir="false" afterPath="$PROJECT_DIR$/venv/photo_rect.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -24,83 +16,61 @@
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
-  <component name="DockManager">
-    <window id="1">
-      <content type="file-editors">
-        <state>
-          <leaf>
-            <file pinned="false" current-in-tab="true">
-              <entry file="file://$PROJECT_DIR$/venv/maze_old.txt">
-                <provider selected="true" editor-type-id="text-editor">
-                  <state relative-caret-position="119">
-                    <caret line="7" column="4" selection-start-line="7" selection-start-column="4" selection-end-line="7" selection-end-column="4" />
-                  </state>
-                </provider>
-              </entry>
-            </file>
-          </leaf>
-        </state>
-      </content>
-    </window>
-  </component>
   <component name="FUSProjectUsageTrigger">
     <session id="-1022280450">
       <usages-collector id="statistics.lifecycle.project">
         <counts>
-          <entry key="project.closed" value="6" />
-          <entry key="project.open.time.1" value="1" />
+          <entry key="project.closed" value="8" />
+          <entry key="project.open.time.1" value="2" />
+          <entry key="project.open.time.10" value="1" />
           <entry key="project.open.time.19" value="1" />
           <entry key="project.open.time.3" value="1" />
           <entry key="project.open.time.33" value="1" />
           <entry key="project.open.time.34" value="1" />
           <entry key="project.open.time.36" value="1" />
+          <entry key="project.open.time.46" value="1" />
           <entry key="project.open.time.52" value="1" />
           <entry key="project.open.time.9" value="1" />
-          <entry key="project.opened" value="8" />
+          <entry key="project.opened" value="11" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
         <counts>
           <entry key="jpg" value="2" />
           <entry key="png" value="21" />
-          <entry key="py" value="28" />
-          <entry key="txt" value="10" />
+          <entry key="py" value="30" />
+          <entry key="txt" value="13" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.open">
         <counts>
           <entry key="Image" value="23" />
-          <entry key="PLAIN_TEXT" value="10" />
-          <entry key="Python" value="28" />
+          <entry key="PLAIN_TEXT" value="13" />
+          <entry key="Python" value="30" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
           <entry key="dummy" value="5" />
-          <entry key="py" value="5239" />
+          <entry key="py" value="5461" />
           <entry key="txt" value="611" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
           <entry key="PLAIN_TEXT" value="616" />
-          <entry key="Python" value="5239" />
+          <entry key="Python" value="5461" />
         </counts>
       </usages-collector>
     </session>
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/venv/graphic/enemy/enemy_down/enemy_down_2.png">
-          <provider selected="true" editor-type-id="images" />
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/venv/game.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="459">
-              <caret line="66" column="40" lean-forward="true" selection-start-line="66" selection-start-column="40" selection-end-line="66" selection-end-column="40" />
+            <state relative-caret-position="238">
+              <caret line="23" column="55" selection-start-line="23" selection-start-column="55" selection-end-line="23" selection-end-column="55" />
               <folding>
                 <element signature="e#0#13#0" expanded="true" />
               </folding>
@@ -111,25 +81,20 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/venv/bomb.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="527">
-              <caret line="31" column="74" lean-forward="true" selection-start-line="31" selection-start-column="74" selection-end-line="31" selection-end-column="74" />
+            <state relative-caret-position="612">
+              <caret line="36" column="35" selection-start-line="36" selection-start-column="35" selection-end-line="36" selection-end-column="35" />
               <folding>
                 <element signature="e#0#32#0" expanded="true" />
               </folding>
             </state>
           </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/venv/graphic/enemy/enemy_down/enemy_down_3.png">
-          <provider selected="true" editor-type-id="images" />
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/venv/Player.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-680">
-              <caret line="32" selection-start-line="32" selection-end-line="32" />
+            <state relative-caret-position="112">
+              <caret line="53" column="48" lean-forward="true" selection-start-line="53" selection-start-column="48" selection-end-line="53" selection-end-column="48" />
               <folding>
                 <element signature="e#0#32#0" expanded="true" />
               </folding>
@@ -138,20 +103,19 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/venv/graphic/enemy/enemy_down/enemy_down_4.png">
-          <provider selected="true" editor-type-id="images" />
+        <entry file="file://$PROJECT_DIR$/venv/photo_rect.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="255">
+              <caret line="17" lean-forward="true" selection-start-line="17" selection-end-line="17" />
+            </state>
+          </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/venv/graphic/enemy/enemy_down/enemy_down_5.png">
-          <provider selected="true" editor-type-id="images" />
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/venv/enemy.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="387">
-              <caret line="184" column="59" selection-start-line="184" selection-start-column="59" selection-end-line="184" selection-end-column="59" />
+            <state relative-caret-position="999">
+              <caret line="260" lean-forward="true" selection-start-line="260" selection-end-line="260" />
               <folding>
                 <element signature="e#0#29#0" expanded="true" />
               </folding>
@@ -160,12 +124,23 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/venv/graphic/background.png">
-          <provider selected="true" editor-type-id="images" />
+        <entry file="file://$PROJECT_DIR$/README.txt">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-63" />
+          </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/venv/graphic/enemy/enemy_down/enemy_down_7.png">
+        <entry file="file://$PROJECT_DIR$/venv/a_star.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="578">
+              <caret line="34" column="4" lean-forward="true" selection-start-line="34" selection-start-column="4" selection-end-line="34" selection-end-column="4" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/venv/graphic/background.png">
           <provider selected="true" editor-type-id="images" />
         </entry>
       </file>
@@ -225,20 +200,20 @@
         <option value="$USER_HOME$/Downloads/PacManCPSC386-master/PacManCPSC386-master/pac_man.py" />
         <option value="$PROJECT_DIR$/venv/maze_20x20.txt" />
         <option value="$PROJECT_DIR$/venv/maze.txt" />
-        <option value="$PROJECT_DIR$/venv/a_star.py" />
-        <option value="$PROJECT_DIR$/venv/photo_rect.py" />
         <option value="$PROJECT_DIR$/venv/Level.py" />
         <option value="$PROJECT_DIR$/venv/maze_old.txt" />
-        <option value="$PROJECT_DIR$/venv/Player.py" />
         <option value="$PROJECT_DIR$/venv/bomb.py" />
-        <option value="$PROJECT_DIR$/venv/game.py" />
+        <option value="$PROJECT_DIR$/venv/a_star.py" />
         <option value="$PROJECT_DIR$/venv/enemy.py" />
+        <option value="$PROJECT_DIR$/venv/photo_rect.py" />
+        <option value="$PROJECT_DIR$/venv/Player.py" />
+        <option value="$PROJECT_DIR$/venv/game.py" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="1912" />
-    <option name="y" value="14" />
+    <option name="x" value="-60" />
+    <option name="y" value="53" />
     <option name="width" value="1696" />
     <option name="height" value="1026" />
   </component>
@@ -259,27 +234,6 @@
               <item name="481 AI game" type="b2602c69:ProjectViewProjectNode" />
               <item name="481 AI game" type="462c0819:PsiDirectoryNode" />
               <item name="venv" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="481 AI game" type="b2602c69:ProjectViewProjectNode" />
-              <item name="481 AI game" type="462c0819:PsiDirectoryNode" />
-              <item name="venv" type="462c0819:PsiDirectoryNode" />
-              <item name="graphic" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="481 AI game" type="b2602c69:ProjectViewProjectNode" />
-              <item name="481 AI game" type="462c0819:PsiDirectoryNode" />
-              <item name="venv" type="462c0819:PsiDirectoryNode" />
-              <item name="graphic" type="462c0819:PsiDirectoryNode" />
-              <item name="enemy" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="481 AI game" type="b2602c69:ProjectViewProjectNode" />
-              <item name="481 AI game" type="462c0819:PsiDirectoryNode" />
-              <item name="venv" type="462c0819:PsiDirectoryNode" />
-              <item name="graphic" type="462c0819:PsiDirectoryNode" />
-              <item name="enemy" type="462c0819:PsiDirectoryNode" />
-              <item name="enemy_down" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="481 AI game" type="b2602c69:ProjectViewProjectNode" />
@@ -355,15 +309,15 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="1912" y="14" width="1696" height="1026" extended-state="6" />
+    <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.2177322" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.19020021" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.3295964" />
-      <window_info anchor="bottom" id="Run" order="2" weight="0.34080717" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.329718" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.3441704" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -404,17 +358,17 @@
       <breakpoints>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/venv/enemy.py</url>
-          <line>217</line>
+          <line>216</line>
           <option name="timeStamp" value="19" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/venv/enemy.py</url>
-          <line>218</line>
+          <line>217</line>
           <option name="timeStamp" value="20" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/venv/enemy.py</url>
-          <line>219</line>
+          <line>218</line>
           <option name="timeStamp" value="21" />
         </line-breakpoint>
       </breakpoints>
@@ -434,9 +388,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state>
           <caret line="10" column="28" selection-start-line="10" selection-start-column="28" selection-end-line="10" selection-end-column="28" />
-          <folding>
-            <element signature="e#0#13#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -450,13 +401,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="85">
           <caret line="5" column="2" selection-start-line="5" selection-start-column="2" selection-end-line="5" selection-end-column="2" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/venv/photo_rect.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="153">
-          <caret line="11" selection-start-line="11" selection-end-line="11" />
         </state>
       </provider>
     </entry>
@@ -496,13 +440,6 @@
     <entry file="file://$PROJECT_DIR$/venv/graphic/enemy/enemy_down/enemy_down_1.png">
       <provider selected="true" editor-type-id="images" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/venv/a_star.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="306">
-          <caret line="99" selection-start-line="99" selection-end-line="99" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/venv/Level.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="340">
@@ -517,24 +454,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/venv/graphic/enemy/enemy_down/enemy_down_7.png">
-      <provider selected="true" editor-type-id="images" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/venv/graphic/background.png">
-      <provider selected="true" editor-type-id="images" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/venv/graphic/enemy/enemy_down/enemy_down_3.png">
-      <provider selected="true" editor-type-id="images" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/venv/graphic/enemy/enemy_down/enemy_down_4.png">
-      <provider selected="true" editor-type-id="images" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/venv/graphic/enemy/enemy_down/enemy_down_5.png">
-      <provider selected="true" editor-type-id="images" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/venv/graphic/enemy/enemy_down/enemy_down_2.png">
-      <provider selected="true" editor-type-id="images" />
-    </entry>
     <entry file="file://$PROJECT_DIR$/venv/maze_old.txt">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="119">
@@ -542,10 +461,67 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/venv/graphic/enemy/enemy_down/enemy_down_2.png">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/venv/graphic/enemy/enemy_down/enemy_down_3.png">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/venv/graphic/enemy/enemy_down/enemy_down_7.png">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/venv/graphic/enemy/enemy_down/enemy_down_5.png">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/venv/graphic/background.png">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/README.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-63" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/venv/a_star.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="578">
+          <caret line="34" column="4" lean-forward="true" selection-start-line="34" selection-start-column="4" selection-end-line="34" selection-end-column="4" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/venv/enemy.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="999">
+          <caret line="260" lean-forward="true" selection-start-line="260" selection-end-line="260" />
+          <folding>
+            <element signature="e#0#29#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/venv/graphic/enemy/enemy_down/enemy_down_4.png">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/venv/photo_rect.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="255">
+          <caret line="17" lean-forward="true" selection-start-line="17" selection-end-line="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/venv/Player.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="112">
+          <caret line="53" column="48" lean-forward="true" selection-start-line="53" selection-start-column="48" selection-end-line="53" selection-end-column="48" />
+          <folding>
+            <element signature="e#0#32#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/venv/bomb.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="527">
-          <caret line="31" column="74" lean-forward="true" selection-start-line="31" selection-start-column="74" selection-end-line="31" selection-end-column="74" />
+        <state relative-caret-position="612">
+          <caret line="36" column="35" selection-start-line="36" selection-start-column="35" selection-end-line="36" selection-end-column="35" />
           <folding>
             <element signature="e#0#32#0" expanded="true" />
           </folding>
@@ -554,30 +530,10 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/venv/game.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="459">
-          <caret line="66" column="40" lean-forward="true" selection-start-line="66" selection-start-column="40" selection-end-line="66" selection-end-column="40" />
+        <state relative-caret-position="238">
+          <caret line="23" column="55" selection-start-line="23" selection-start-column="55" selection-end-line="23" selection-end-column="55" />
           <folding>
             <element signature="e#0#13#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/venv/Player.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-680">
-          <caret line="32" selection-start-line="32" selection-end-line="32" />
-          <folding>
-            <element signature="e#0#32#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/venv/enemy.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="387">
-          <caret line="184" column="59" selection-start-line="184" selection-start-column="59" selection-end-line="184" selection-end-column="59" />
-          <folding>
-            <element signature="e#0#29#0" expanded="true" />
           </folding>
         </state>
       </provider>

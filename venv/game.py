@@ -21,7 +21,7 @@ class Game:
         self.font2 = pygame.font.Font(None, 25)
         self.won = False
         self.lost = False
-        pygame.display.set_caption("AI game")
+        pygame.display.set_caption("Bobby The Destroyer")
         self.clock = pygame.time.Clock()
         this_folder = os.path.dirname(os.path.abspath(__file__))
         my_file = os.path.join(this_folder, 'maze_old.txt')
@@ -57,6 +57,7 @@ class Game:
 
             self.player.update()
             self.player.blitme()
+            self.guard.sight()  # added this
             self.guard.update()
             self.guard.blitme()
             for b in self.bombs:
@@ -85,4 +86,3 @@ class Game:
 
 game = Game()
 game.play()
-
