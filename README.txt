@@ -45,9 +45,8 @@ enemy.py-
 	a path and then follow the path. It also contains a method called "sight()" which is used to see if the guard can "see" the player, and if it does it calls the AI to
 	generate a path to the player's position
 a_star.py
-	A large portion of this file was used for testing the AI Algorithm to make sure it works properly, matplotlib was used only for the testing and is not needed to run the game
-	The only part of this file that is used is the "a_star_alg()" and it uses A Star to generate a path from the starting x and y position to the goal x and y position based on
-	the obstacle x and y positions. It uses the euclidean distance from the current state to the goal state as the heurisitc, and uses helper methods such as "vert_valid" and "get_index"
+	This file contains the A Star algorithm to generate a path from the starting x and y position to the goal x and y position based on the obstacle x and y positions. 
+	It uses the euclidean distance from the current state to the goal state as the heurisitc, and uses helper methods such as "vert_valid" and "get_index"
 	to help create and identify if certain steps are possible
 Maze.txt-
 	This file is the text file containing the details of the maze that is used
