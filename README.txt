@@ -18,9 +18,10 @@ Variables" option and look for the "Path" variable, selected it and press "Edit"
 the end and then add one path to the Python3.7 directory and another to the Scripts folder, the scripts will be needed for pip3. An example would be these two paths
 "C:\Users\<user>\AppData\Local\Programs\Python\Python37-32" and "C:\Users\<user>\AppData\Local\Programs\Python\Python37-32\Scripts"
 
-3. With the Environment Path Variables set up, next is to install Pygame if it is not already installed, this is done with the command "pip3 install pygame"
+3. With the Environment Path Variables set up, next is to install Pygame if it is not already installed, this is done by typing the command "pip3 install pygame" into
+the terminal
 
-4. Everything is installed and the game can be ran with the command "python game.py"
+4. Everything is installed and the game can be ran with the terminal command "python game.py" while its in the directory of the game
 
 
 File functional descriptions:
