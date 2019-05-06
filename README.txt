@@ -1,5 +1,5 @@
 Description: The goal of the game is to navigate the maze with the arrow keys and reach the objectives spread throughout while avoiding the guard that will try to 
-find the player based on the bombs being heard or the player being seen.
+find the player based on the objectives detonation being heard or the player being seen.
 
 
 Requirements:
